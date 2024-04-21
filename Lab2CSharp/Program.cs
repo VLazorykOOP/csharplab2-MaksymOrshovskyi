@@ -29,9 +29,9 @@ class Program
         {
             Console.Write(item + " ");
         }
-
+//_________________________________task2____________________________________
         Console.WriteLine();
-//______________________________task2_______________________________________
+
         // Введення розміру масиву
         Console.WriteLine("Введіть розмір масиву:");
         int n = int.Parse(Console.ReadLine());
@@ -71,9 +71,9 @@ class Program
         {
             Console.Write(item + " ");
         }
-
+//___________________________________task3__________________________________
         Console.WriteLine();
-//_______________________________task3______________________________________
+
         // Введення розмірності масиву
         Console.WriteLine("Введіть розмірність квадратного масиву:");
         int n2;
@@ -115,5 +115,44 @@ class Program
 
         // Виведення результату
         Console.WriteLine("Сума елементів на побічній діагоналі: " + diagonalSum);
+//__________________________________task4___________________________________
+        Console.WriteLine();
+
+        // Введення розмірності масиву
+        Console.WriteLine("Введіть кількість рядків у масиві:");
+        int n3 = int.Parse(Console.ReadLine());
+
+        // Ініціалізація двовимірного масиву
+        int[,] array4 = new int[n3, n3];
+
+        // Введення елементів масиву
+        Console.WriteLine("Введіть елементи масиву:");
+
+        // Масив для зберігання кількості додатних елементів у кожному рядку
+        int[] positiveCounts = new int[n3];
+
+        for (int i = 0; i < n3; i++)
+        {
+            Console.WriteLine("Рядок " + (i + 1) + ":");
+            string[] elements = Console.ReadLine().Split();
+            
+            // Підрахунок додатних елементів та їх збереження у масиві positiveCounts
+            foreach (string element in elements)
+            {
+                int num = int.Parse(element);
+                if (num > 0)
+                {
+                    positiveCounts[i]++;
+                }
+            }
+        }
+
+        // Виведення кількості додатних елементів у кожному рядку
+        Console.WriteLine("Кількість додатних елементів у кожному рядку:");
+
+        for (int i = 0; i < n3; i++)
+        {
+            Console.WriteLine("Рядок " + (i + 1) + ": " + positiveCounts[i]);
+        }
     }
 }
