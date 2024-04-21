@@ -31,7 +31,7 @@ class Program
         }
 
         Console.WriteLine();
-//_____________________________________________________________________
+//______________________________task2_______________________________________
         // Введення розміру масиву
         Console.WriteLine("Введіть розмір масиву:");
         int n = int.Parse(Console.ReadLine());
@@ -71,5 +71,49 @@ class Program
         {
             Console.Write(item + " ");
         }
+
+        Console.WriteLine();
+//_______________________________task3______________________________________
+        // Введення розмірності масиву
+        Console.WriteLine("Введіть розмірність квадратного масиву:");
+        int n2;
+        while (!int.TryParse(Console.ReadLine(), out n2) || n2 <= 0)
+        {
+            Console.WriteLine("Введіть коректну розмірність квадратного масиву (ціле додатне число):");
+        }
+
+        // Ініціалізація двовимірного масиву
+        int[,] array3 = new int[n2, n2];
+
+        // Зчитування елементів масиву з клавіатури
+        Console.WriteLine("Введіть елементи масиву:");
+        for (int i = 0; i < n2; i++)
+        {
+            string[] elements = Console.ReadLine().Split();
+            if (elements.Length != n2)
+            {
+                Console.WriteLine("Кількість елементів не відповідає розмірності масиву.");
+                return;
+            }
+
+            for (int j = 0; j < n2; j++)
+            {
+                if (!int.TryParse(elements[j], out array3[i, j]))
+                {
+                    Console.WriteLine("Введіть коректні цілі числа.");
+                    return;
+                }
+            }
+        }
+
+        // Підрахунок суми елементів на побічній діагоналі
+        int diagonalSum = 0;
+        for (int i = 0; i < n2; i++)
+        {
+            diagonalSum += array3[i, n2 - i - 1];
+        }
+
+        // Виведення результату
+        Console.WriteLine("Сума елементів на побічній діагоналі: " + diagonalSum);
     }
 }
